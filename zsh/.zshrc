@@ -107,13 +107,16 @@ source $ZSH/oh-my-zsh.sh
 alias cl='clear'
 alias pmc='cd ~/dev/portal-minha-claro'
 
-eval "$(starship init zsh)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+#export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+if [[ "$(uname)" == "Darwin" ]]; then
+    export PATH="$PATH:/opt/homebrew/bin"
+elif [[ "$(uname)" == "Linux" ]]; then
+    export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+fi
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -142,3 +145,6 @@ zinit light-mode for \
 zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+eval "$(starship init zsh)"
+
+PATH=~/.console-ninja/.bin:$PATH
