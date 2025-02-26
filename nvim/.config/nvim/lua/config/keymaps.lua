@@ -5,3 +5,7 @@
 local keymap = vim.keymap
 
 keymap.set("n", "<leader>rn", ":IncRename ")
+
+-- Increment/decrement
+keymap.set("n", "+", "<C-a>")
+keymap.set("n", "-", "<C-x>")
