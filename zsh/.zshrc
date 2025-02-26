@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias cl='clear'
 alias pmc='cd ~/dev/portal-minha-claro'
+alias update-discord='wget -O ~/discord.deb "https://discord.com/api/download?platform=linux&format=deb" && sudo dpkg -i ~/discord.deb && sudo apt -f install && rm ~/discord.deb'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -142,8 +143,8 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
-zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-completions
 eval "$(starship init zsh)"
 
