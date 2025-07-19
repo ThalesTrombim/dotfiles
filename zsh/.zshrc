@@ -104,9 +104,29 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+alias kconf='~/.config/kitty/kitty.conf'
+
+alias portal='cd dev/portal-mcr-public && nvm use && clear'
+alias mocks='cd dev/mocks && npm run dev'
+alias dev='cd ~/dev/ && clear'
+
+alias nrs='npm run serve'
+
+
+alias mfe='tmux rename-window "RUN"; tmux split-window -h; \
+tmux select-pane -t 0; tmux send-keys -t 0 mocks C-m; \
+tmux send-keys -t 1 dev C-m; \
+tmux select-pane -t 1; tmux send-keys -t 1 "nvm use 16 && clear" C-m; \
+tmux new-window -n "NVIM"'
+
 alias cl='clear'
 alias pmc='cd ~/dev/portal-minha-claro'
 alias update-discord='wget -O ~/discord.deb "https://discord.com/api/download?platform=linux&format=deb" && sudo dpkg -i ~/discord.deb && sudo apt -f install && rm ~/discord.deb'
+alias td='tmux rename-window "TERMINAL"; tmux new-window -n "LazyVim"; tmux new-window -n "CONFIG"; tmux send-keys -t CONFIG "cd ~ && clear" C-m; tmux select-window -t 0 && clear'
+# alias tw='tmux rename-window "RUN"; tmux split-window -h && tmux send-keys -t 0 mocks C-m && tmux send-keys -t 1 portal C-m'
+alias tw='tmux rename-window "RUN"; tmux split-window -v; tmux select-pane -t 0; tmux split-window -h; tmux send-keys -t 0 mocks C-m; tmux send-keys -t 1 portal C-m; tmux send-keys -t 2 dev C-m'
+
+alias tk='tmux kill-server'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -117,6 +137,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="$PATH:/opt/homebrew/bin"
 elif [[ "$(uname)" == "Linux" ]]; then
     export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+fi
+
+#export ubuntu terminal compability
+if [[ "$(uname)" == "Linux" ]]; then
+  export GDK_BACKEND=x11
 fi
 
 ### Added by Zinit's installer
