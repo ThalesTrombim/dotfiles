@@ -9,3 +9,11 @@ keymap.set("n", "<leader>rn", ":IncRename ")
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
+
+-- Adicionar aspas na palavra sob o cursor
+vim.keymap.set("n", '<leader>q"', 'ciw"<C-r>""<Esc>', { desc = "Envolver palavra com aspas duplas" })
+vim.keymap.set("n", "<leader>q'", "ciw'<C-r>\"'<Esc>", { desc = "Envolver palavra com aspas simples" })
+
+-- Adicionar colchetes na palavra sob o cursor
+vim.keymap.set("n", "<leader>q[", 'ciw[<C-r>"]<Esc>', { desc = "Envolver palavra com colchetes []" })
+vim.keymap.set("n", "<leader>q{", 'ciw{<C-r>"}<Esc>', { desc = "Envolver palavra com chaves {}" })
